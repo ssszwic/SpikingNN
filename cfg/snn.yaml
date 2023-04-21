@@ -1,0 +1,28 @@
+# dataset
+nc: 10
+dataset: /home/ssszw/Work/snn/Dataset
+
+# train parameter
+learning_rate: 0.001
+batch_size: 100
+epoch: 10
+
+# net parameter
+thresh: 0.5
+lens: 0.5
+decay: 0.25
+time_window: 1
+
+# input size
+height: 28
+width: 28
+planes: 1
+
+net:
+  # [module, args] 
+  [[Conv, [6, 5, 1, 0]], # [out_planes, kernel_size, stride, padding]
+   [Pool2d, [2, 2, 0]], # [kernel_size, stride, padding]
+   [Conv, [12, 5, 1, 0]],
+   [Pool2d, [2, 2, 0]],
+   [Fc,   [10]], # out_planes
+  ]
